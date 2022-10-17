@@ -19,37 +19,40 @@ const Student = (props) => {
     fetchData();
   }, []);
 
-  // onClick handler to Update data of the Student
-  const onDeleteRecord = () => {
-    const { oldName, name, email } = this.state;
-
-    // validation checkpoint for the input fields
-    if (!name || !email || !oldName) {
-      alert("Please fill in all the fields");
-      return;
-    }
-
-    // API request to send the data for update
-    axios
-      .put(`http://127.0.0.1:5000/update/${oldName}`, {
-        email: email,
-        user_name: name,
+  // onClick handler to Delete Record of a Student
+  const deleteRecord = (name) => {
+    axios.delete(`http://127.0.0.1:5000/delete/${name}`);
+    setStudents(
+      students.filter((student) => {
+        return student.name !== name;
       })
-      .then((response) => {
-        this.setState({ email: "", name: "" });
-      })
-      .catch((err) => {});
+    );
   };
 
   return (
     <div className={style.wrapper}>
-      {students.map((student) => (
-        <>
-          <p className={style.user}>{`My Name is ${student.user_name}`}</p>
-          <p>{student.email}</p>
-          <button onClick={() => onDeleteRecord()}>DELETE</button>
-        </>
-      ))}
+      <>
+        <h3>User Records</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>user name</th>
+              <th>email id</th>
+            </tr>
+          </thead>
+          <tbody>
+            {students.map((student) => (
+              <tr>
+                <td>{student.user_name}</td>
+                <td>{student.email}</td>
+                <button onClick={(e) => deleteRecord(student.user_name, e)}>
+                  DELETE
+                </button>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
       <div onClick={() => props.history.push("/admin")}>ADMIN</div>
     </div>
   );
