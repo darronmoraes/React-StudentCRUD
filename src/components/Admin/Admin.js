@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Student from "../Student/Student";
 import style from "./admin.module.css";
 
 class Admin extends Component {
@@ -97,8 +98,8 @@ class Admin extends Component {
     // API request to send the data for insertion
     axios
       .post("http://127.0.0.1:5000/create", {
-        firstName: firstName,
-        lastName: lastName,
+        first_name: firstName,
+        last_name: lastName,
         gender: gender,
         email: email,
         country: country,
@@ -296,6 +297,7 @@ class Admin extends Component {
             </div>
           </div>
         </div>
+        <Student />
       </>
     );
   }

@@ -3,9 +3,114 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: aquamarine;
+  background-color: #fff;
+  position: relative;
 }
 
-.user {
-  color: purple;
+/* table */
+
+.contentTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contentTable thead tr {
+  background-color: #009879;
+  color: #fff;
+  text-align: left;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+.contentTable th,
+.contentTable td {
+  padding: 12px 15px;
+}
+
+.contentTable tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.contentTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.contentTable tbody tr:nth-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.contentTable tbody tr.activeRow:nth-last-of-type(even) {
+  color: #009878;
+}
+
+.contentTable tbody tr.activeRow:hover:nth-last-of-type(even) {
+  color: #fff;
+}
+
+.contentTable tbody tr:hover {
+  background-color: #1d2b3a;
+  color: #fff;
+}
+
+/* Button Styles */
+
+.button {
+  font-size: 15px;
+  font-family: Arial;
+  width: 100px;
+  height: 40px;
+  border-width: 1px;
+  color: #fff;
+  border-color: #00dfc4;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  background: #00dfc4;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #1d2b3a;
+}
+
+.buttonRight {
+  display: block;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.btnDelete {
+  font-size: 15px;
+  font-family: Arial;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  border: none;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  background: #f44336;
+  text-transform: uppercase;
+}
+
+/* .btnDelete:hover {
+  background: #1d2b3a;
+  color: #fff;
+  border-width: 2px;
+} */
+
+.btnDelete:hover {
+  background: #fff;
+  color: #f44336;
 }
