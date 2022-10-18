@@ -28,32 +28,60 @@ const Student = (props) => {
       })
     );
   };
-
+  console.log({ gavin: props.match });
   return (
     <div className={style.wrapper}>
       <>
-        <h3>User Records</h3>
-        <table>
+        <h3>student records</h3>
+        {props.match?.path === "/" && (
+          <div className={style.buttonRight}>
+            <button
+              className={style.button}
+              onClick={() => props.history.push("/admin")}
+            >
+              admin
+            </button>
+          </div>
+        )}
+        <table className={style.contentTable}>
           <thead>
             <tr>
-              <th>user name</th>
-              <th>email id</th>
+              <th>student id</th>
+              <th>first name</th>
+              <th>last name</th>
+              <th>gender</th>
+              <th>email</th>
+              <th>country</th>
+              <th>mobile</th>
+              {props.match?.path === "/admin" && <th></th>}
             </tr>
           </thead>
           <tbody>
             {students.map((student) => (
-              <tr>
-                <td>{student.user_name}</td>
+              <tr className={style.activeRow}>
+                <td>{student.id}</td>
+                <td>{student.first_name}</td>
+                <td>{student.last_name}</td>
+                <td>{student.gender}</td>
                 <td>{student.email}</td>
-                <button onClick={(e) => deleteRecord(student.user_name, e)}>
-                  DELETE
-                </button>
+                <td>{student.country}</td>
+                <td>{student.mobile}</td>
+                {props.match?.path === "/admin" && (
+                  <td align="center">
+                    <button
+                      className={style.btnDelete}
+                      onClick={(e) => deleteRecord(student.first_name, e)}
+                    >
+                      DELETE
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
       </>
-      <div onClick={() => props.history.push("/admin")}>ADMIN</div>
+      {/* <div onClick={() => props.history.push("/admin")}>ADMIN</div> */}
     </div>
   );
 };
