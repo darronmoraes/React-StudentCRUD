@@ -32,7 +32,7 @@ const Student = (props) => {
   return (
     <div className={style.wrapper}>
       <>
-        <h3>student records</h3>
+        <h3 className={style.head}>student records</h3>
         {props.match?.path === "/" && (
           <div className={style.buttonRight}>
             <button
